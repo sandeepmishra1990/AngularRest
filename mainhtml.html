@@ -1,0 +1,38 @@
+<html ng-app="mainmodule">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="mainmodule.js"></script>
+</head>
+<body ng-controller="maincontroller">
+
+<form name="searchuser" ng-submit="search(username)">
+<input type="search" placeholder="username to find" ng-model="username">
+<input type="submit" value="search">
+
+<div> {{ error }}</div><br><br>
+ID: {{userdetails.id}}<br>
+LoginName: {{userdetails.login}} <br>
+CreatedAt: {{userdetails.created_at}} <br><br>
+
+
+<br><br><br>
+<div>
+<table id=tab1">
+<thead>
+<td>name</td>
+<td>stars</td>
+<td>laguage</td>
+</thead>
+<tbody>
+<tr ng-repeat="repo in repos" | orderBy: '-stargazers_count'>
+<td>{{repo.name}}</td>
+<td>{{repo.stargazers_count}}</td>
+<td>{{repo.language}}</td>
+</tr>
+</tbody>
+
+</form>
+
+
+</body>
+</html>
